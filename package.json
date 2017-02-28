@@ -1,0 +1,23 @@
+{
+  "name": "mp3-admin",
+  "version": "0.1.0",
+  "description": "Administrador de bibliotecas mp3",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "preferGlobal": true,
+  "bin": {
+    "mp3-admin": "./index.js"
+  },
+  "dependencies": {
+    "commander": "^2.9.0",
+    "glob": "^7.1.1",
+    "globbies": "0.0.4",
+    "id3-parser": "^1.1.1",
+    "musicmetadata": "^2.0.5"
+  }
+}
