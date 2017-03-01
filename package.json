@@ -15,9 +15,7 @@
   },
   "dependencies": {
     "commander": "^2.9.0",
-    "glob": "^7.1.1",
-    "globbies": "0.0.4",
-    "id3-parser": "^1.1.1",
-    "musicmetadata": "^2.0.5"
+    "id3-parser": "^1.2.0",
+    "lodash": "^4.17.4"
   }
 }

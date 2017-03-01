@@ -3,6 +3,10 @@
 
 const program = require('commander');
 const fs = require('fs');
+const id3 = require('id3-parser');
+const _ = require('lodash');
+
+const x = require('./lib/fs-oper');
 
 program
   .version('0.1.0')
@@ -13,21 +17,34 @@ program
 program.parse(process.argv);
 
 function _list() {
-  console.log(program.args[0]);
-  var path = program.args[0];  //'/home/reivaj79mx/Documentos/[1987] Si Yo Fuera El';
-  /*readDirectory(path)
-    .then(files => console.log(files))
-    .catch(error => console.log(error));*/
+  var directory = program.args[0];
+  x.readDirectory(directory).then(files => {
+    console.log(files);
+  });  
+
+  /*readDirectory(path).then(files => { 
+      _.forEach(files, file => {
+        if (_.endsWith(file, '.mp3')) {
+          readFile(`${path}/${file}`).then((data) => {
+            id3.parse(data).then(tags => {
+              console.log(tags.track, tags.title);
+            });
+          });
+        }
+      })
+    }).catch(error => console.log(error));*/
 }
 
-function readDirectory(path) {
+
+
+function readFile(file) {
   return new Promise((resolve, reject) => {
-    fs.readdir(path, function(error, files) {
+    fs.readFile(file, (error, data) => {
       if (error) {
         return reject(error);
       }
 
-      return resolve(files);
-    })
+      return resolve(data);
+    });
   })
 }
